@@ -1,3 +1,8 @@
+// Make rainbow mode where each stroke is in different color
+// Show the current color
+// Make the page responsive
+// Remove the active effect on eraser after another button is clicked
+
 const DEFAULT_ROWS = 16;
 const DEFAULT_COLUMNS = 16;
 const SECONDARY_COLOR = getComputedStyle(document.documentElement).getPropertyValue('--secondary-bg'); 
@@ -46,6 +51,8 @@ randomColorButton.addEventListener("click", () => {
     let red = Math.floor(Math.random() * 256);
     let green = Math.floor(Math.random() * 256);
     let blue = Math.floor(Math.random() * 256);
+
+    document.querySelectorAll(".active").forEach((button) => button.classList.remove("active"));
 
     setColor(red, green, blue);
 });
