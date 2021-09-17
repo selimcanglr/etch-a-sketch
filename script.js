@@ -1,7 +1,4 @@
 // Make rainbow mode where each stroke is in different color
-// Show the current color
-// Make the page responsive
-// Remove the active effect on eraser after another button is clicked
 
 const DEFAULT_ROWS = 16;
 const DEFAULT_COLUMNS = 16;
@@ -19,7 +16,7 @@ const colorPicker = document.getElementById("color-picker");
 const root = document.querySelector(":root");
 
 setupRows(DEFAULT_ROWS, DEFAULT_COLUMNS);
-setupSlider();
+setupSettings();
 
 slider.addEventListener("change", (evt) => {
     const value = evt.target.value;
@@ -65,9 +62,10 @@ clearButton.addEventListener("click", () => {
     setupRows(slider.value, slider.value);
 });
 
-function setupSlider() {
+function setupSettings() {
     valueOfSlider.textContent = `${DEFAULT_ROWS} x ${DEFAULT_COLUMNS}`;
     slider.value = `${DEFAULT_COLUMNS}`;    
+    colorPicker.value = "#000000";
 }
 
 function setupRows(rows, columns) {
@@ -101,7 +99,6 @@ function setColor(red, green, blue) {
 function changeColor(evt) {
     evt.target.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--paint-color'); // #999999
 }
-
 
 // From the answer of Tim Down, 
 // https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
