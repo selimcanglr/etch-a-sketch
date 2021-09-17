@@ -14,6 +14,8 @@ const slider = document.getElementById("slider");
 const clearButton = document.getElementById("clear");
 const eraserButton = document.getElementById("eraser");
 const randomColorButton = document.getElementById("random-color");
+const rainbowButton = document.getElementById("rainbow-mode");
+const colorPicker = document.getElementById("color-picker");
 const root = document.querySelector(":root");
 
 setupRows(DEFAULT_ROWS, DEFAULT_COLUMNS);
@@ -29,9 +31,20 @@ slider.addEventListener("mousemove", (evt) => {
     updateValueOfSlider(evt.target.value);
 });
 
-clearButton.addEventListener("click", () => {
-    clearRows();
-    setupRows(slider.value, slider.value);
+colorPicker.addEventListener("change", (evt) => {
+    const color = evt.target.value;
+    root.style.setProperty("--paint-color", color);
+});
+
+randomColorButton.addEventListener("click", () => {
+    let red = Math.floor(Math.random() * 256);
+    let green = Math.floor(Math.random() * 256);
+    let blue = Math.floor(Math.random() * 256);
+
+    document.querySelectorAll(".active").forEach((button) => button.classList.remove("active"));
+    colorPicker.value = rgbToHex(red, green, blue);
+
+    setColor(red, green, blue);
 });
 
 eraserButton.addEventListener("click", (e) => {
@@ -47,14 +60,9 @@ eraserButton.addEventListener("click", (e) => {
     e.target.classList.toggle('active');
 }); 
 
-randomColorButton.addEventListener("click", () => {
-    let red = Math.floor(Math.random() * 256);
-    let green = Math.floor(Math.random() * 256);
-    let blue = Math.floor(Math.random() * 256);
-
-    document.querySelectorAll(".active").forEach((button) => button.classList.remove("active"));
-
-    setColor(red, green, blue);
+clearButton.addEventListener("click", () => {
+    clearRows();
+    setupRows(slider.value, slider.value);
 });
 
 function setupSlider() {
@@ -92,4 +100,16 @@ function setColor(red, green, blue) {
 
 function changeColor(evt) {
     evt.target.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--paint-color'); // #999999
+}
+
+
+// From the answer of Tim Down, 
+// https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
+function componentToHex(c) {
+    let hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+  
+function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
