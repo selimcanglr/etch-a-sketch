@@ -8,6 +8,10 @@
     line-height: 1.5;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -22,11 +26,11 @@ body {
     color: var(--tertiary-bg);
     text-align: center;
     font-family: "Roboto", sans-serif;
-    font-size: 2.8em;
+    font-size: 2.4em;
 }
 
 #main {
-    margin: 1rem 0;
+    margin: 0.5rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,8 +41,8 @@ body {
 #container {
     display: grid;
     box-shadow: rgba(0, 0, 0, 0.24) 4px 9px 12px;;
-    width: 300px;
-    height: 300px;
+    width: 310px;
+    height: 310px;
     grid-template-columns: repeat(var(--row-count), 1fr);
     grid-template-rows: repeat(var(--column-count), 1fr);
     background-color: var(--secondary-bg);
@@ -104,19 +108,83 @@ body {
 }
 
 .color-input:hover {
-    opacity: 0.9;
+    opacity: 0.85;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (min-width: 600px) {
+    .title {
+        font-size: 2.6em;
+    }
+
+    #main {
+        margin-top: 0.1rem;
+    }
+
+    #container {
+        width: 450px;
+        height: 450px;
+    }
     
+    #value {
+        font-size: 1.2em;
+    }
+
+    .slider {
+        width: 12rem;
+    }
+
+    .button {
+        width: 180px;
+        height: 3.5rem;
+        padding: 6px 6px;
+    }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (min-width: 768px) {
+    .title {
+        font-size: 3em;
+    }
 
+    #main {
+        flex-direction: row-reverse;
+        gap: 5rem;
+    }
+
+    .slide-container {
+        margin-top: 1.5rem;
+    }
+
+    .settings {
+        gap: 1.5rem;
+    }
+
+    .button {
+        width: 150px;
+        height: 3.3rem;
+    }
 }
 
+@media only screen and (min-width: 992px) {
+    #main {
+        margin-top: 2.8rem;
+    }
 
-@media only screen and (max-width: 600px) {
+    .settings {
+        gap: 1.6rem;
+    }
 
+    .button {
+        width: 160px;
+        height: 3.8rem;
+    }
+
+    #container {
+        width: 500px;
+        height: 500px;
+    }
+
+    .color-input {
+        width: 80px;
+        height: 80px;
+    }
 }
-
