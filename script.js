@@ -17,7 +17,7 @@ const root = document.querySelector(":root");
 
 setupRows(DEFAULT_ROWS, DEFAULT_COLUMNS);
 setupSettings();
-introJs().start();
+// introJs().start();
 
 slider.addEventListener("change", (evt) => {
     const value = evt.target.value;
