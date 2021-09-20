@@ -21,7 +21,9 @@ setupSettings();
 slider.addEventListener("change", (evt) => {
     const value = evt.target.value;
     clearRows(); 
+    document.querySelectorAll(".active").forEach(a => a.classList.remove("active"));
     setupRows(value, value);
+        
 });
 
 slider.addEventListener("mousemove", (evt) => {
