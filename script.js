@@ -1,4 +1,4 @@
-// Make rainbow mode where each stroke is in different color
+// Show the hex code of the color somewhere
 
 const DEFAULT_ROWS = 16;
 const DEFAULT_COLUMNS = 16;
@@ -17,6 +17,7 @@ const root = document.querySelector(":root");
 
 setupRows(DEFAULT_ROWS, DEFAULT_COLUMNS);
 setupSettings();
+introJs().start();
 
 slider.addEventListener("change", (evt) => {
     const value = evt.target.value;
@@ -80,7 +81,7 @@ eraserButton.addEventListener("click", (e) => {
 
 clearButton.addEventListener("click", () => {
     clearRows();
-    eraserButton.classList.remove("active");
+    document.querySelectorAll(".active").forEach(a => a.classList.remove("active"));
     setupRows(slider.value, slider.value);
 });
 
