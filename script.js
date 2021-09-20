@@ -48,7 +48,7 @@ eraserButton.addEventListener("click", (e) => {
     eraser = e.target;
     
     if (eraser.classList.contains("active")) {
-        root.style.setProperty("--paint-color", THIRD_COLOR);
+        root.style.setProperty("--paint-color", colorPicker.value);
     }
     else {
         root.style.setProperty("--paint-color", SECONDARY_COLOR);
@@ -59,6 +59,7 @@ eraserButton.addEventListener("click", (e) => {
 
 clearButton.addEventListener("click", () => {
     clearRows();
+    eraserButton.classList.remove("active");
     setupRows(slider.value, slider.value);
 });
 
