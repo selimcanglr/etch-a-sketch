@@ -44,8 +44,27 @@ randomColorButton.addEventListener("click", () => {
     setColor(red, green, blue);
 });
 
+rainbowButton.addEventListener("click", (e) => {
+    document.querySelector("#eraser").classList.remove("active");
+    e.target.classList.toggle("active");
+
+    let divs = document.querySelectorAll("#container div");
+
+    if (e.target.classList.contains("active")) {
+        startRainbow(divs);
+    }
+    else {
+        shutRainbow(divs);
+    }
+});
+
 eraserButton.addEventListener("click", (e) => {
     eraser = e.target;
+
+    let divs = document.querySelectorAll("#container div");
+    shutRainbow(divs);
+    
+    rainbowButton.classList.remove("active");
     
     if (eraser.classList.contains("active")) {
         root.style.setProperty("--paint-color", colorPicker.value);
@@ -54,7 +73,7 @@ eraserButton.addEventListener("click", (e) => {
         root.style.setProperty("--paint-color", SECONDARY_COLOR);
     }
 
-    e.target.classList.toggle('active');
+    eraser.classList.toggle('active');
 }); 
 
 clearButton.addEventListener("click", () => {
@@ -75,7 +94,6 @@ function setupRows(rows, columns) {
     for (let i = 0; i < rows * columns; i++) {
         let div = document.createElement("div");
         div.addEventListener("mouseover", changeColor);
-        console.log("added div");
         container.appendChild(div);
     }
 }
@@ -101,6 +119,17 @@ function changeColor(evt) {
     evt.target.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--paint-color'); // #999999
 }
 
+function changeRandomColor(evt) {
+    let red = Math.floor(Math.random() * 256);
+    let green = Math.floor(Math.random() * 256);
+    let blue = Math.floor(Math.random() * 256);
+
+    colorPicker.value = rgbToHex(red, green, blue);
+
+    setColor(red, green, blue);
+    evt.target.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--paint-color'); // #999999
+}
+
 // From the answer of Tim Down, 
 // https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
 function componentToHex(c) {
@@ -110,4 +139,14 @@ function componentToHex(c) {
   
 function rgbToHex(r, g, b) {
     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
+
+function startRainbow(divs) {
+    divs.forEach(div => div.removeEventListener("mouseover", changeColor));
+    divs.forEach(div => div.addEventListener("mouseover", changeRandomColor));
+}
+
+function shutRainbow(divs) {
+    divs.forEach(div => div.removeEventListener("mouseover", changeRandomColor));
+    divs.forEach(div => div.addEventListener("mouseover", changeColor));
 }
