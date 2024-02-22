@@ -1,48 +1,109 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en-US">
-    <head>
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Etch a Sketch</title>
-        <link rel="stylesheet" href="node_modules/intro.js/introjs.css">
-        <link rel="stylesheet" href="style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
-    </head>
-    <body>
-        <header id="header">
-            <h1 class="title">Etch-a-sketch</h1>
-        </header>
-        <main id="main">
-            <div >
-                <div data-title="Welcome!" data-intro="Welcome to Etch-a-sketch! You can start etching
-                by hovering over the whiteboard or choose whatever option you would like from the options menu." 
-                id="container">
-                
-                </div>
-                <div data-title="You Are The Boss Here" data-intro="Determine the size of the whiteboard by using the slider. You can also see the size of the board." class="slide-container">
-                    <p id="value"></p>
-                    <input type="range" min="1" max="64" value="1" class="slider" id="slider">
-                </div>
-            </div>
-            <div id="settings" class="settings">
-                <input data-title="Pick a Color!" data-intro="You can choose any color you want manually." type="color" id="color-picker" value="#000000" class="color-input">
-                <button data-title="Gamble!" data-intro="Trust your fate, take a deep breath and take your chance at the Candom Color mode! You may as well see some astonishing colors." type="button" id="random-color" class="button">Random Color</button>
-                <button type="button" id="rainbow-mode" class="button" data-step="10" data-title="New Feature!" data-intro="The rainbow mode is now ready for your use!">Rainbow Mode</button>
-                <button data-title="Not a Rubber One" data-intro="I don't think there needs to be an explanation for this one. Just... Erase." type="button" id="eraser" class="button">Eraser</button>
-                <button data-title="Tidiest Person On Earth!" data-intro="If you would like to start over, well here is your chance." type="button" id="clear" class="button">Clear</button>
-            </div>
-        </main>
-        <footer id="footer">
-            <div>
-                <p>
-                    Made by <a href="https://github.com/selimcanglr" target="_blank">Selim Can Güler</a>
-                </p>
-            </div>
-        </footer>
-        <script src="script.js"></script>
-    </body>
-
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Etch a Sketch</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/intro.js/minified/introjs.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/intro.js/minified/intro.min.js"></script>
+  </head>
+  <body>
+    <header id="header">
+      <h1 class="title">Etch-a-sketch</h1>
+    </header>
+    <main id="main">
+      <div>
+        <div
+          data-title="Welcome!"
+          data-intro="Welcome to Etch-a-sketch! You can start etching
+                by hovering over the whiteboard or choose whatever option you would like from the options menu."
+          id="container"
+        ></div>
+        <div
+          data-title="You Are The Boss Here"
+          data-intro="Determine the size of the whiteboard by using the slider. You can also see the size of the board."
+          class="slide-container"
+        >
+          <p id="value"></p>
+          <input
+            type="range"
+            min="1"
+            max="64"
+            value="1"
+            class="slider"
+            id="slider"
+          />
+        </div>
+      </div>
+      <div id="settings" class="settings">
+        <input
+          data-title="Pick a Color!"
+          data-intro="You can choose any color you want manually."
+          type="color"
+          id="color-picker"
+          value="#000000"
+          class="color-input"
+        />
+        <button
+          data-title="Gamble!"
+          data-intro="Trust your fate, take a deep breath and take your chance at the Candom Color mode! You may as well see some astonishing colors."
+          type="button"
+          id="random-color"
+          class="button"
+        >
+          Random Color
+        </button>
+        <button
+          type="button"
+          id="rainbow-mode"
+          class="button"
+          data-step="10"
+          data-title="New Feature!"
+          data-intro="The rainbow mode is now ready for your use!"
+        >
+          Rainbow Mode
+        </button>
+        <button
+          data-title="Not a Rubber One"
+          data-intro="I don't think there needs to be an explanation for this one. Just... Erase."
+          type="button"
+          id="eraser"
+          class="button"
+        >
+          Eraser
+        </button>
+        <button
+          data-title="Tidiest Person On Earth!"
+          data-intro="If you would like to start over, well here is your chance."
+          type="button"
+          id="clear"
+          class="button"
+        >
+          Clear
+        </button>
+      </div>
+    </main>
+    <footer id="footer">
+      <div>
+        <p>
+          Made by
+          <a href="https://github.com/selimcanglr" target="_blank"
+            >Selim Can Güler</a
+          >
+        </p>
+      </div>
+    </footer>
+    <script src=""></script>
+    <script src="script.js"></script>
+  </body>
 </html>
